@@ -3,25 +3,25 @@
 
           <h1> {{ thread.title }} </h1>
 
-<post-list :posts="ThreadPosts()"/> 
+<post-list :posts="ThreadPosts"/> 
+<div class="col-full">
+    <post-editor :thread="thread" :user="user" />
+
+</div>
         
 </div>
-<!-- <div v-else class="col-full text-center">
-  <h1>not found </h1>
-  <router-link :to="{name: 'Home'} "> Read some cool threads
-    <button class="btn btn-primary">
-      Go to home
-    </button> </router-link>
-</div> -->
+
 </template>
 
 <script>
 import sourceData from '@/data.json'
 import PostList from '@/components/PostList.vue'
+import PostEditor from '@/components/PostEditor.vue'
 export default {
     name: 'PageThreadShow',
     components: {
-        PostList
+        PostList,
+        PostEditor
     },
     props: {
         id:{
@@ -33,7 +33,8 @@ export default {
     data() {
         return {
             threads: sourceData.threads,
-            posts: sourceData.posts
+            posts: sourceData.posts ,
+            newPostText: ''
             // users: sourceData.users
         }
     },
@@ -45,16 +46,25 @@ export default {
             return this.posts.filter(post => post.threadId === this.id)
         }
     },
+    methods:{
+        
+        addPost() {
+            const postId = 'qqqq' + Math.random()
+            const post = {
+                id: postId,
+                threadId: this.id,
+                userId: "FsCDAk9w8NeXEceLV87arpsXjnQ2",
+                text: this.newPostText,
+                publishedAt: Math.floor(  Date.now() / 1000),
+
+            }
+            this.posts.push(post)
+            this.thread.post.push(postId)
+            this.newPostText = ' '
+        }
+    }
 
     
-    // methods: {
-    //     postById(postId) {
-    //         return this.posts.find(p => p.id === postId)
-    //     },
-    //     userById(userId) {
-    //         return this.users.find(u => u.id === userId)
-    //     }
-    // }
 
 }
 </script>
