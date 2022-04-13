@@ -5,6 +5,19 @@ import router from '@/router'
 // import dayjs from 'dayjs'
 const ForumApp = createApp(App)
 ForumApp.use(router)
-ForumApp.component('AppDate', AppDate)
+
+const requireComponent = require.context('./components', true, /App[A-Z]\w+\.(vue|js)$/)
+requireComponent.keys().forEach(function (fileName) {
+  let baseComponentConfig = requireComponent(fileName)
+  baseComponentConfig = baseComponentConfig.default || baseComponentConfig
+  const baseComponentName = baseComponentConfig.name || (
+    fileName
+      .replace(/^.+\//, '')
+      .replace(/\.\w+$/, '')
+  )
+  ForumApp.component(baseComponentName, baseComponentConfig)
+})
+
+
 ForumApp.mount('#app')
 
