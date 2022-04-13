@@ -5,6 +5,6 @@ import router from '@/router'
 // import dayjs from 'dayjs'
 const ForumApp = createApp(App)
 ForumApp.use(router)
-ForumApp.component(AppDate)
+ForumApp.component('AppDate', AppDate)
 ForumApp.mount('#app')
 
