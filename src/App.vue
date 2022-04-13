@@ -1,9 +1,9 @@
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
-  <!-- <div class="container"> -->
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <div class="container">
    
     <router-view/>
-    <!-- </div> -->
+    </div>
 </template>
 
 <script>

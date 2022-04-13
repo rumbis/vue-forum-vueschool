@@ -1,6 +1,6 @@
 import PageHome from '@/pages/PageHome.vue'
-import PageThreadShow from '@/pages/PageThreadShow.vue'
-import PageNotFound from '@/pages/PageNotFound'
+import PageThreadShow from '@/pages/ThreadShow.vue'
+import NotFound from '@/pages/NotFound'
 import { createRouter, createWebHistory} from 'vue-router'
 import sourceData from '@/data.json'
 const routes = [
@@ -34,7 +34,7 @@ const routes = [
     {
       path: '/:pathMatch(.*)*',
      name:'NotFound',
-      component: PageNotFound 
+      component: NotFound 
     },
     
   ]
