@@ -4,7 +4,7 @@
 
     <post-list :posts="threadPosts"/>
 
-    <post-editor @save="addPost"/>
+    <post-editor @save="addPost" />
   </div>
 </template>
 

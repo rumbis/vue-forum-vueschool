@@ -1,11 +1,11 @@
 <template>
   <div class="col-full">
-    <form @submit.prevent="save">
+    <form @keyup.enter="save" @submit.prevent="save" >
       <div class="form-group">
-        <textarea v-model="text" name="" id="" cols="30" rows="10" class="form-input"/>
+        <textarea v-model="text" name="" id="" cols="30" rows="10" class="form-input"  />
       </div>
       <div class="form-actions">
-        <button class="btn-blue">Submit post</button>
+        <button class="btn-blue"  >Submit post</button>
       </div>
     </form>
   </div>
@@ -24,7 +24,7 @@ export default {
       const post = {
         id: postId,
         text: this.text,
-        publishedAt: Math.floor(Date.now() / 1000),
+        publishedAt: Math.floor( Date.now() / 1000),
         userId: 'rpbB8C6ifrYmNDufMERWfQUoa202'
       }
       this.$emit('save', { post }) // access under eventData.post
