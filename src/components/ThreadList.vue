@@ -1,4 +1,5 @@
 <template>
+<div class="col-full">
   <div class="thread-list">
 
               <h2 class="list-title">Threads</h2>
@@ -32,7 +33,7 @@
             
 
           </div>
-
+</div>
 </template>
 
 <script>
