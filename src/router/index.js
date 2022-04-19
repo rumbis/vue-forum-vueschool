@@ -3,6 +3,7 @@ import PageThreadShow from '@/pages/ThreadShow.vue'
 import NotFound from '@/pages/NotFound'
 import PageForum from '@/pages/PageForum.vue'
 import Category from '@/pages/PageCategory.vue'
+import PageProfile from '@/pages/PageProfile'
 import { createRouter, createWebHistory} from 'vue-router'
 import sourceData from '@/data.json'
 const routes = [
@@ -15,6 +16,12 @@ const routes = [
           name: 'Forum',
           component: PageForum,
           props: true
+        },
+        {
+          path: '/me',
+          name: 'PageProfile',
+          component: PageProfile,
+          
         },
         {
           path: '/category/:id',
