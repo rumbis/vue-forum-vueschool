@@ -1,0 +1,60 @@
+<template>
+  <header class="header" id="header">
+
+        <router-link :to=" {name: 'Home'} " class="logo">
+            <img src="@/assets/svg/vueschool-logo.svg">
+        </router-link>
+
+        <div class="btn-hamburger">
+            <!-- use .btn-humburger-active to open the menu -->
+            <div class="top bar"></div>
+            <div class="middle bar"></div>
+            <div class="bottom bar"></div>
+        </div>
+
+    <!-- use .navbar-open to open nav -->
+    <nav class="navbar">
+        <ul>
+            <li class="navbar-item">
+                <a href="register.html">Register</a>
+            </li>
+
+            <li class="navbar-item">
+                <a href="login.html">Login</a>
+            </li>
+        </ul>
+<!-- 
+        <ul>
+            <li class="navbar-item">
+                <a href="index.html">Home</a>
+            </li>
+            <li class="navbar-item">
+                <a href="category.html">Category</a>
+            </li>
+            <li class="navbar-item">
+                <a href="forum.html">Forum</a>
+            </li>
+            <li class="navbar-item">
+                <a href="thread.html">Thread</a>
+            </li> -->
+            <!-- Show these option only on mobile-->
+            <!-- <li class="navbar-item mobile-only">
+                <a href="profile.html">My Profile</a>
+            </li>
+            <li class="navbar-item mobile-only">
+                <a href="#">Logout</a>
+            </li>
+        </ul> -->
+    </nav>
+  </header>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>
