@@ -3,8 +3,8 @@
     <div class="forum-list">
 
       <h2 class="list-title">
-          <router-link v-if="categoryId" :to="{name: 'Category', params: {id: categoryId}}">{{ title }}</router-link>
-          <span v-else>{{ title }}</span>
+        <router-link v-if="categoryId" :to="{name: 'Category', params: {id: categoryId}}">{{ title }}</router-link>
+        <span v-else>{{ title }}</span>
       </h2>
 
       <div class="forum-listing" v-for="forum in forums" :key="forum.id">
@@ -27,7 +27,6 @@
 
         <div class="last-thread"></div>
       </div>
-
     </div>
   </div>
 </template>
