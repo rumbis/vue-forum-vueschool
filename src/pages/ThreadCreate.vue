@@ -36,6 +36,13 @@ export default {
     },
     methods: {
         //dispatch a vuex action
+        save(){
+            this.$store.dispatch('CreateThread', {
+                forumId: this.forum.id,
+                title: this.title,
+                text: this.text
+            })
+        }
     }
 
 }
