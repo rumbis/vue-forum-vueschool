@@ -23,7 +23,7 @@ const routes = [
   },
   {
     path: '/me/edit',
-    name: 'ProfileEdit',
+    name: 'PageProfileEdit',
     component: PageProfile,
     props: { edit: true }
   },

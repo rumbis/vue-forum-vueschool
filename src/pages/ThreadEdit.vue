@@ -31,10 +31,10 @@ export default {
         title,
         text
       })
-      this.$router.push({ name: 'ThreadShow', params: { id: thread.id } })
+      this.$router.push({ name: 'PageThreadShow', params: { id: thread.id } })
     },
     cancel () {
-      this.$router.push({ name: 'Forum', params: { id: this.forum.id } })
+      this.$router.push({ name: 'PageThreadShow', params: { id: this.id } })
     }
   }
 }
