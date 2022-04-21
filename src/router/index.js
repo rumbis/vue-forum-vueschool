@@ -1,5 +1,6 @@
 import PageHome from '@/pages/PageHome.vue'
 import PageThreadShow from '@/pages/ThreadShow.vue'
+import ThreadCreate from '@/pages/ThreadCreate.vue'
 import NotFound from '@/pages/NotFound'
 import PageForum from '@/pages/PageForum.vue'
 import Category from '@/pages/PageCategory.vue'
@@ -61,6 +62,10 @@ const routes = [
 
        }
       },
+      {path:"/form/:forumId/thread/create",
+      name:'ThreadCreate',
+      component: ThreadCreate,
+      props: true},
     {
       path: '/:pathMatch(.*)*',
      name:'NotFound',
