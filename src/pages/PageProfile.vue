@@ -2,19 +2,14 @@
   <div class="container">
     <div class="flex-grid">
       <div class="col-3 push-top">
-        <UserProfileCard :user="user" />
-        <UserProfileCardEditor :user="user" />
+        <UserProfileCard v-if="!edit" :user="user" />
+        <UserProfileCardEditor v-else :user="user" />
 
         <p class="text-xsmall text-faded text-center">
           Member since june 2003, last visited 4 hours ago
         </p>
 
-        <div class="text-center">
-          <hr />
-          <a href="edit-profile.html" class="btn-green btn-small"
-            >Edit Profile</a
-          >
-        </div>
+
       </div>
 
       <div class="col-7 push-top">
@@ -34,6 +29,7 @@ import UserProfileCard from '@/components/UserProfileCard'
 import UserProfileCardEditor from '@/components/UserProfileCardEditor'
 import { mapGetters } from 'vuex'
 export default {
+  props:{edit: {Boolean,default:false}},
   components: { PostList, UserProfileCard, UserProfileCardEditor },
   computed: {
     ...mapGetters({ user: 'authUser' })
