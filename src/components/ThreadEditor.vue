@@ -46,14 +46,14 @@ export default {
       }
     }
   },
+  computed: {
+    existing () {
+      return !!this.title
+    }
+  },
   methods: {
     save () {
       this.$emit('save', { ...this.form })
-    }
-  },
-  computed:{
-    existing () {
-      return !!this.title
     }
   }
 }
