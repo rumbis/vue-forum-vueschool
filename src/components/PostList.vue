@@ -24,8 +24,8 @@
         </div>
       </div>
 
-      <div class="post-date text-faded">
-        {{post.publishedAt}}
+      <div class="post-date text-faded"  >
+       <AppDate :timestamp="post.publishedAt" />
       </div>
 
     </div>
@@ -34,7 +34,9 @@
 </template>
 
 <script>
-import sourceData from '@/data.json'
+
+
+
 export default {
   props: {
     posts: {
@@ -42,9 +44,9 @@ export default {
       type: Array
     }
   },
-  data () {
-    return {
-      users: sourceData.users
+  computed: {
+    users() {
+      return this.$store.state.users
     }
   },
   methods: {
@@ -56,5 +58,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

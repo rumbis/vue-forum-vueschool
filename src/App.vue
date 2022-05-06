@@ -1,16 +1,21 @@
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
-  <!-- <div class="container"> -->
-   
+
+  <the-navbar/>
+ 
+ 
+  <div class="container">
+
     <router-view/>
-    <!-- </div> -->
+    </div>
 </template>
 
 <script>
-
+import TheNavbar from '@/components/TheNavbar'
 export default {
   name: "App",
- 
+ components: {
+  TheNavbar
+ }
 };
 </script>
 
@@ -22,6 +27,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
 </style>

@@ -1,4 +1,5 @@
 <template>
+<div class="col-full">
   <div class="thread-list">
 
               <h2 class="list-title">Threads</h2>
@@ -9,7 +10,7 @@
                           <router-link :to="{name: 'PageThreadShow', params: {id: thread.id}}">{{thread.title}}</router-link>
                       </p>
                       <p class="text-faded text-xsmall">
-                          By <a href="#"> {{ userById(thread.userId).name }} </a>, {{ thread.publishedAt}}.
+                          By <a href="#"> {{ userById(thread.userId).name }} </a>, <app-date :timestamp="thread.publishedAt" />.
                       </p>
                   </div>
 
@@ -24,7 +25,7 @@
                           <p class="text-xsmall">
                               <a href="#"> {{ userById(thread.userId).name }} </a>
                           </p>
-                          <p class="text-xsmall text-faded">{{ thread.publishedAt}}</p>
+                          <p class="text-xsmall text-faded"> <app-date :timestamp="thread.publishedAt" /> </p>
                       </div>
                   </div>
               </div>
@@ -32,19 +33,23 @@
             
 
           </div>
-
+</div>
 </template>
 
 <script>
-import sourceData from '@/data.json'
-// import ThreadList from './ThreadList.vue'
+
+
 export default {
-//   components: { ThreadList },
-    data() {
-        return {
-            threads: sourceData.threads,
-            posts: sourceData.posts,
-            users: sourceData.users
+
+    computed: {
+        threads() {
+            return this.$store.state.threads
+        },
+        posts() {
+            return this.$store.state.posts
+        },
+        users() {
+            return this.$store.state.users
         }
     },
     methods: {
