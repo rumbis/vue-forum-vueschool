@@ -4,39 +4,42 @@
       Create new thread in <i>{{ forum.name }}</i>
     </h1>
 
- <ThreadEditor @save="save" @cancel="cancel" />
+    <ThreadEditor @update="update" @save="save" @cancel="cancel" />
   </div>
 </template>
 <script>
-import ThreadEditor from "@/components/ThreadEditor.vue"
+import ThreadEditor from "@/components/ThreadEditor.vue";
 export default {
-    props: {
-        forumId: { type: String, required: true }
+  props: {
+    forumId: { type: String, required: true },
+  },
+  computed: {
+    forum() {
+      return this.$store.state.forums.find(
+        (forum) => forum.id === this.forumId
+      );
     },
-    computed: {
-        forum() {
-            return this.$store.state.forums.find(forum => forum.id === this.forumId);
-        }
+  },
+  data() {
+    return {
+      title: "",
+      text: "",
+    };
+  },
+  methods: {
+    async save({ title, text }) {
+      const thread = await this.$store.dispatch("createThread", {
+        forumId: this.forum.id,
+        title,
+        text,
+      });
+      this.$router.push({ name: "PageThreadShow", params: { id: thread.id } });
     },
-    data() {
-        return {
-            title: "",
-            text: ""
-        };
+    cancel() {
+      this.$router.push({ name: "Forum", params: { id: this.forum.id } });
     },
-    methods: {
-        async save({title, text}) {
-            const thread = await this.$store.dispatch("createThread", {
-                forumId: this.forum.id,
-                title,
-                text
-            });
-            this.$router.push({ name: "PageThreadShow", params: { id: thread.id } });
-        },
-        cancel() {
-            this.$router.push({ name: "Forum", params: { id: this.forum.id } });
-        }
-    },
-    components: { ThreadEditor }
-}
+  },
+
+  components: { ThreadEditor },
+};
 </script>

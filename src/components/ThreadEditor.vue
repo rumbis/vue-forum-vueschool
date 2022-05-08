@@ -43,7 +43,9 @@ export default {
       form: {
         title: this.title,
         text: this.text
-      }
+      },
+     
+
     }
   },
   computed: {
