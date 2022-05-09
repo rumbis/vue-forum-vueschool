@@ -41,7 +41,7 @@ const routes = [
   },
   {
     path: '/thread/:id',
-    name: 'PageThreadShow',
+    name: 'ThreadShow',
     component: ThreadShow,
     props: true,
     beforeEnter (to, from, next) {

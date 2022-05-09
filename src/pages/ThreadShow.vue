@@ -3,8 +3,10 @@
     <h1>
       {{ thread.title }}
       <router-link
-        :to="{ name: 'ThreadEdit', params: { id: this.id } }"
-        class="btn-small btn-green"
+        :to="{ name: 'ThreadEdit', id: this.id }"
+        class="btn-green btn-small"
+      
+    
       >
         Edit Thread
       </router-link>
@@ -17,42 +19,43 @@
 </template>
 
 <script>
-import PostList from "@/components/PostList";
-import PostEditor from "@/components/PostEditor";
+import PostList from '@/components/PostList'
+import PostEditor from '@/components/PostEditor'
+import { findById } from '@/helpers'
 export default {
-  name: "ThreadShow",
+  name: 'ThreadShow',
   components: {
     PostList,
-    PostEditor,
+    PostEditor
   },
   props: {
     id: {
       required: true,
-      type: String,
-    },
+      type: String
+    }
   },
   computed: {
-    threads() {
-      return this.$store.state.threads;
+    threads () {
+      return this.$store.state.threads
     },
-    posts() {
-      return this.$store.state.posts;
+    posts () {
+      return this.$store.state.posts
     },
-    thread() {
-      return this.threads.find((thread) => thread.id === this.id); // also available under this.$route.params.id
+    thread () {
+      return findById(this.threads, this.id)
     },
-    threadPosts() {
-      return this.posts.filter((post) => post.threadId === this.id);
-    },
+    threadPosts () {
+      return this.posts.filter(post => post.threadId === this.id)
+    }
   },
   methods: {
-    addPost(eventData) {
+    addPost (eventData) {
       const post = {
         ...eventData.post,
-        threadId: this.id,
-      };
-      this.$store.dispatch("createPost", post);
-    },
-  },
-};
+        threadId: this.id
+      }
+      this.$store.dispatch('createPost', post)
+    }
+  }
+}
 </script>

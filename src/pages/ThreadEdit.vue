@@ -9,6 +9,7 @@
 </template>
 <script>
 import ThreadEditor from '@/components/ThreadEditor'
+import { findById } from '@/helpers'
 export default {
   components: { ThreadEditor },
   props: {
@@ -16,25 +17,23 @@ export default {
   },
   computed: {
     thread () {
-      return this.$store.state.threads.find(thread => thread.id === this.id)
+      return findById(this.$store.state.threads, this.id)
     },
     text () {
-      return this.$store.state.posts.find(
-        post => post.id === this.thread.posts[0]
-      ).text
+      return findById(this.$store.state.posts, this.thread.posts[0]).text
     }
   },
   methods: {
     async save ({ title, text }) {
       const thread = await this.$store.dispatch('updateThread', {
-        Id: this.id,
+        id: this.id,
         title,
         text
       })
-      this.$router.push({ name: 'PageThreadShow', params: { id: thread.id } })
+      this.$router.push({ name: 'ThreadShow', params: { id: thread.id } })
     },
     cancel () {
-      this.$router.push({ name: 'PageThreadShow', params: { id: this.id } })
+      this.$router.push({ name: 'ThreadShow', params: { id: this.id } })
     }
   }
 }

@@ -24,8 +24,8 @@
         </div>
       </div>
 
-      <div class="post-date text-faded"  >
-       <AppDate :timestamp="post.publishedAt" />
+      <div class="post-date text-faded">
+        <AppDate :timestamp="post.publishedAt" />
       </div>
 
     </div>
@@ -34,9 +34,7 @@
 </template>
 
 <script>
-
-
-
+import { findById } from '@/helpers'
 export default {
   props: {
     posts: {
@@ -45,13 +43,13 @@ export default {
     }
   },
   computed: {
-    users() {
+    users () {
       return this.$store.state.users
     }
   },
   methods: {
     userById (userId) {
-      return this.users.find(p => p.id === userId)
+      return findById(this.users, userId)
     }
   }
 }
